@@ -25,10 +25,11 @@ if(mysqli_query($conn,$qry))
 
 		$qty = $dbqty-$quantity;
 		echo $damid;
-		$query="update stocks set quantity='$qty' where stockid='$damid'";
+		$query="update stocks set quantity='$qty' where mid='$damid'";
 		mysqli_query($conn,$query);
 		$activity="insert into activity (userid,status,description) values ('$userid','INSERT','A new record inserted into damage table and quantity is decreased')";
 		mysqli_query($conn,$activity);
+		
 
 		header("Location: damage.php?damagematerial=ok&id=mid");
 	}

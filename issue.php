@@ -1,6 +1,7 @@
 <?php
 include('header.php');
 include('conn.php');
+
 $rs=mysqli_query($conn,"select * from stocks s join materials m on s.mid=m.mid ");
 $res=mysqli_query($conn,"select * from subdivision");
 $resu=mysqli_query($conn,"select * from division");
@@ -103,14 +104,9 @@ if(isset($_GET['grsno'])){
                         </select>
                       </div>
                     </div>
-                    
-                          <?php
-
-                            if(isset($_GET['grsno'])){
-
-
-                          ?>
-
+                      <?php
+                        if(isset($_GET['grsno'])){
+                      ?>
                       <div class="col-lg-3">
                       <div class="form-group">
                       <input type="hidden" value="<?php echo $mat['stockid']; ?>" name="stockid">

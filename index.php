@@ -3,6 +3,15 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php 
+
+    session_start(); 
+    if(isset($_SESSION['userid'])){
+        header('location: show.php');
+    }
+
+?>
+
 <head>
     <!-- Required meta tags-->
     <meta charset="UTF-8">
@@ -44,9 +53,8 @@
                 <div class="login-wrap">
                     <div class="login-content">
                         <div class="login-logo">
-                            <a href="#">
+                            INVENTORY MANAGEMENT OF ASSAM STATE<br>ELECTRICITY BOARD,JORHAT
                                 <img src="">
-                            </a>
                         </div>
                         <div class="login-form">
                             <form action="logincheck.php" method="post">
@@ -55,15 +63,16 @@
                                     <input class="au-input au-input--full" type="text" name="user" placeholder="username">
                                 </div>
                                 <div class="form-group">
-                                    <label>Password</label>
-                                    <input class="au-input au-input--full" type="password" name="pass" placeholder="Password">
+                                    <label>Password <?php if(isset($_GET['ok'])){echo '<span class="badge badge-pill badge-danger">Wrong password </span>';} ?></label>
+                                    <input class="au-input au-input--full" type="password" name="pass" placeholder="Password" required>
+                                    
                                 </div>
                                 <div class="login-checkbox">
                                     <label>
                                         <input type="checkbox" name="remember">Remember Me
                                     </label>
                                     <label>
-                                        <a href="#">Forgotten Password?</a>
+                                        <a href="forgotpass.php">Forgotten Password?</a>
                                     </label>
                                 </div>
                                 <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">sign in</button>

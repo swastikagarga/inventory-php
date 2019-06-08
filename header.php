@@ -9,14 +9,14 @@ header('location:index.php');
 
 ?>
 <?php 
-include('conn.php'); 
+    include('conn.php'); 
     $select_activity = "select * from activity limit 3";
     $all_activity = mysqli_query($conn, $select_activity);
     $rs=mysqli_query($conn, "select * from users where userid='$sesid' ");
 
-    $select_notify = "select * from notification where whom_to_notify='$sesusertype' limit 3";
+    $select_notify = "select * from notification where whom_to_notify='$sesusertype' order by id desc limit 3 ";
     $all_notify = mysqli_query($conn, $select_notify);
-    ?>
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -55,6 +55,31 @@ include('conn.php');
     <!-- Main CSS-->
     <link href="css/theme.css" rel="stylesheet" media="all">
 
+
+    <script>
+        function showResult(str) {
+        if (str.length==0) { 
+            document.getElementById("livesearch").innerHTML="";
+            document.getElementById("livesearch").style.border="0px";
+            return;
+        }
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp=new XMLHttpRequest();
+        } else {  // code for IE6, IE5
+            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange=function() {
+            if (this.readyState==4 && this.status==200) {
+            document.getElementById("livesearch").innerHTML=this.responseText;
+            document.getElementById("livesearch").style.border="1px solid #A5ACB2";
+            }
+        }
+        xmlhttp.open("GET","livesearch.php?q="+str,true);
+        xmlhttp.send();
+        }
+    </script>
+
 </head>
 
 <body class="animsition">
@@ -64,7 +89,7 @@ include('conn.php');
             <div class="header-mobile__bar">
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
-                        <a class="logo" href="index.html">
+                        <a href="#">
                             <img src="images/icon/apdcllogo.png" alt="CoolAdmin" />
                         </a>
                         <button class="hamburger hamburger--slider" type="button">
@@ -139,6 +164,18 @@ include('conn.php');
                                         <a href="usertable.php">Users</a>
                                     </li>';}?>
                                 </ul>
+                                <hr>
+                    <ul class="list-unstyled navbar__list">
+                    <li class="has-sub">
+                            <a class="js-arrow" href="contactdeveloper.php">
+                             <i class="fas fa-handshake-o"></i>Contact Developers</a>
+                    </li>
+                    <li class="has-sub">
+                            <a class="js-arrow" href="aboutus.php">
+                             <i class="fas fa-cloud"></i>About us</a>
+                    </li>
+
+                    </ul>
                 </div>
             </nav>
         </header>
@@ -184,6 +221,9 @@ include('conn.php');
                                             echo '<li>
                                             <a href="addstock.php">Add stock </a>
                                         </li>';
+                                        echo '<li>
+                                            <a href="approval.php">Issue approve </a>
+                                        </li>';
                                         }
                                     ?>
                                     
@@ -217,11 +257,12 @@ include('conn.php');
                                 </ul>
                         </li>
                     </ul>
+                    
                     <hr>
                     <ul class="list-unstyled navbar__list">
                     <li class="has-sub">
-                            <a class="js-arrow" href="help.php">
-                             <i class="fas fa-handshake-o"></i>Help</a>
+                            <a class="js-arrow" href="contactdeveloper.php">
+                             <i class="fas fa-handshake-o"></i>Contact Developers</a>
                     </li>
                     <li class="has-sub">
                             <a class="js-arrow" href="aboutus.php">
@@ -242,7 +283,9 @@ include('conn.php');
                     <div class="container-fluid">
                         <div class="header-wrap">
                             <form class="form-header" action="" method="POST">
-                                <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
+                                <input class="au-input " type="text" onkeyup="showResult(this.value)" name="search" placeholder="Search for datas &amp; reports..." />
+                                
+                                
                                 <button class="au-btn--submit" type="submit">
                                     <i class="zmdi zmdi-search"></i>
                                 </button>
@@ -417,6 +460,8 @@ include('conn.php');
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-12">
+                                
+            <div id="livesearch"></div>
             
             <!-- END MAIN CONTENT-->
             <!-- END PAGE CONTAINER-->

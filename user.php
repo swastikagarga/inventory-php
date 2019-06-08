@@ -48,6 +48,12 @@ $resu=mysqli_query($conn,"select * from division");
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
+                        <label class="form-control-label" for="input-pass">Password</label>
+                        <input type="password" id="input-password" class="form-control form-control-alternative" placeholder="password"  name="pass" required>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
                         <label class="form-control-label" for="input-email">Email address</label>
                         <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="example@gmail.com" name="email" required>
                       </div>

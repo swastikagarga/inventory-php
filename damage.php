@@ -10,12 +10,9 @@ $id = $_GET['id'];
 $rs=mysqli_query($conn,"select * from stocks s join materials m on s.mid=m.mid where stockid='$id'");
 
 $row=mysqli_fetch_array($rs);
-
-
-
 ?>
         
-        <div class="col-lg-12">
+<div class="col-lg-12">
     <div class="card">
         <div class="card-header">
             <strong>Damage</strong> Materials
@@ -40,11 +37,10 @@ $row=mysqli_fetch_array($rs);
 												<span aria-hidden="true">&times;</span>
 											</button>
 										</div>
-
-                                                <?php
-                                            }
-                                        }
-                                        ?>    
+                      <?php
+                      }
+                      }
+                      ?>    
         <div class="card-body card-block">
         <form action="insertdamage.php" method="POST">
                 <h6 class="heading-small text-muted mb-4">Damage information</h6>
@@ -54,7 +50,7 @@ $row=mysqli_fetch_array($rs);
                       <div class="form-group">
 
                       <label class="form-control-label" for="input-mname">Material name</label>
-                        <input type="hidden" value="<?php echo $row['stockid'] ?>" name="damid">
+                        <input type="hidden" value="<?php echo $row['mid'] ?>" name="damid">
                         <input type="text"id="input-materialname" class="form-control form-control-alternative" value="<?php echo $row['mname'] ?>" name="mname" >
                        </div>
                      </div>

@@ -1,6 +1,6 @@
 <?php
 
-session_start();
+
 
 $sesusertype=$_SESSION['usertypes'];
 
@@ -27,7 +27,8 @@ else
                                 <div class="table-data__tool">
                                     <div class="table-data__tool-left">
                                         <div class="rs-select2--light rs-select2--md-10">
-                                        <form action='stocks.php'>
+                                        <form action='materials.php'>
+                                        <label>Expiry date</label>
                                             <input type="date" name="expiry">
                                             <button class="au-btn-filter">
                                             <i class="zmdi zmdi-filter-list"></i>filters</button></form>
@@ -123,6 +124,4 @@ else
         
     </div>
     </div></div>
-    
-                        
-                                <!-- END DATA TABLE -->
+     <!-- END DATA TABLE -->

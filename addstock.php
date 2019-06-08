@@ -22,31 +22,31 @@ if(isset($_GET['mid'])){
     <div class="card">
         <div class="card-header">
             <strong>Add  Materials</strong>
-            <?php
-                                        if(isset($_GET['addstock'])){
-                                            if($_GET['addstock']=='ok'){
-                                                ?>
-                                                <div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
-                                                <span class="badge badge-pill badge-success">Success</span>
-											<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-												<span aria-hidden="true">&times;</span>
-											</button>
-										</div>
-                                                <?php
-                                            }else{
-                                                ?>
-                                                <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
-											<span class="badge badge-pill badge-danger">Insertion Failed</span>
-											
-											<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-												<span aria-hidden="true">&times;</span>
-											</button>
-										</div>
+                  <?php
+                      if(isset($_GET['addstock'])){
+                          if($_GET['addstock']=='ok'){
+                              ?>
+                              <div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
+                              <span class="badge badge-pill badge-success">Success</span>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                            <?php
+                        }else{
+                            ?>
+                            <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
+                              <span class="badge badge-pill badge-danger">Insertion Failed</span>
+                  
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
 
-                          <?php
-                      }
+                      <?php
                   }
-                  ?>    
+              }
+              ?>    
         </div>
         <div class="card-body card-block">
         <form action="insertstock.php" method="POST">

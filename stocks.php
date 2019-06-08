@@ -1,5 +1,4 @@
 <?php
-
 include('header.php');
 include('conn.php'); 
 $rs=mysqli_query($conn,"select * from stocks");
@@ -21,6 +20,7 @@ else
                                     <div class="table-data__tool-left">
                                         <div class="rs-select2--light rs-select2--md-10">
                                         <form action='stocks.php'>
+                                            <label>Expiry date</label>
                                             <input type="date" name="expiry">
                                             <button class="au-btn-filter">
                                             <i class="zmdi zmdi-filter-list"></i>filters</button></form>
@@ -31,7 +31,7 @@ else
                                             
                                             <div class="dropDownSelect2"></div>
                                     <div class="table-data__tool-right">
-                                        
+                                    
                                         <div class="rs-select2--dark rs-select2--sm rs-select2--dark2">
                                             <select class="js-select2" onchange="javascript:location.href = this.value;" name="type">
                                                 <option selected="selected">Export</option>
@@ -102,11 +102,10 @@ else
                             <?php } ?>
                     <tr class="spacer"></tr>
                 </tr>
-                       
             </tbody>
             </form>
         </table>
-    </div>
+    </div></div></div>
     
 
                                 <!-- END DATA TABLE -->

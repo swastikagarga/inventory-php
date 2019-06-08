@@ -15,48 +15,44 @@ else{
     $join=mysqli_query($conn,"select * from issue i join materials m on i.mid = m.mid join subdivision s on s.sdivid=i.issuedto join division d on d.divid=i.issuedfrom ");
 }
 
-
-
-
 ?>
 
-                  <div class="row">
-                            <div class="col-md-12">
-                                <!-- DATA TABLE -->
-                                <h3 class="title-5 m-b-35">data table</h3>
-                                <div class="table-data__tool">
-                                    <div class="table-data__tool-left">
-                                        <div class="rs-select2--light rs-select2--md-10">
-                                        <form action='issuetable.php'>
-                                            <input type="date" name="from">
-                                            <div class="dropDownSelect2"></div>
-                                        </div>
-                                        <div class="rs-select2--light rs-select2--mD-10">
-                                        <input type="date" name="upto">
-                                            <div class="dropDownSelect2"></div>
-                                        </div>
-                                        <BUTTON type="submit" class="au-btn-filter">
-                                        
-                                            <i class="zmdi zmdi-filter-list"></i>filters</button>
-                                            </form>
-                                    </div>
-                                    <div class="table-data__tool-right">
-                                        <button class="au-btn au-btn-icon au-btn--green au-btn--small">
-                                            <i class="zmdi zmdi-plus"></i>add item</button>
-                                        <div class="rs-select2--dark rs-select2--sm rs-select2--dark2">
-                                            <select class="js-select2" name="type">
-                                                <option selected="selected">Export</option>
-                                                <option value="stockpdf.php">PDF</option>
-                                                <option value="">EXCEL</option>
-                                            </select>
-                                            <div class="dropDownSelect2"></div>
-                                        </div>
-                                        <button class="au-btn au-btn-icon au-btn--green au-btn--small">
-                                                <a href="viewissuetable.php">Print</a>
-                                        </button>
-                                    </div>
-                                </div>
-                       
+<div class="row">
+        <div class="col-md-12">
+            <!-- DATA TABLE -->
+            <h3 class="title-5 m-b-35">data table</h3>
+            <div class="table-data__tool">
+                <div class="table-data__tool-left">
+                    <div class="rs-select2--light rs-select2--md-10">
+                    <form action='issuetable.php'>
+                        <label >From</label>
+                        <input type="date" name="from">
+                    
+                        </div>
+                        <div class="rs-select2--light rs-select2--mD-10">
+                        <label >Upto</label>
+                        <input type="date" name="upto">
+                            
+                        </div>
+                        <button class="au-btn-filter">
+                            <i class="zmdi zmdi-filter-list"></i>filters</button>
+                    </form>
+                </div>
+                <div class="table-data__tool-right">
+                    <div class="rs-select2--dark rs-select2--sm rs-select2--dark2">
+                        <select class="js-select2" onchange="javascript:location.href=this.value;" name="type">
+                            <option selected="selected">Export</option>
+                            <option value="stockpdf.php">PDF</option>
+                            <option value="">EXCEL</option>
+                        </select>
+                        <div class="dropDownSelect2"></div>
+                    </div>
+                    <button class="au-btn au-btn-icon au-btn--green au-btn--small">
+                            <a href="viewissuetable.php">Print</a>
+                    </button>
+                </div>
+            </div>
+    
        <!-- MAIN CONTENT-->
             <div class="main-content">
                 <div class="section__content section__content--p30">
