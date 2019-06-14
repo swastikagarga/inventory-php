@@ -238,7 +238,7 @@ header('location:index.php');
                                 <i class="fas fa-table"></i>Tables</a>
                                 <ul class="list-unstyled navbar__sub-list js-sub-list">
                                     <li>
-                                        <a href="materials.php">Materials </a>
+                                        <a href="material2.php">Materials </a>
                                     </li>
                                     <li>
                                         <a href="stocks.php">Stocks</a>
@@ -460,7 +460,7 @@ header('location:index.php');
                         <div class="row">
                             <div class="col-md-12">
                                 
-            <div id="livesearch"></div>
+            
             
             <!-- END MAIN CONTENT-->
             <!-- END PAGE CONTAINER-->

@@ -1,11 +1,6 @@
 <?php
-
-
-
-$sesusertype=$_SESSION['usertypes'];
-
-
 include('header.php');
+$sesusertype=$_SESSION['usertypes'];
 include('conn.php'); 
 $rs=mysqli_query($conn,"select * from category");
 
@@ -27,11 +22,12 @@ else
                                 <div class="table-data__tool">
                                     <div class="table-data__tool-left">
                                         <div class="rs-select2--light rs-select2--md-10">
-                                        <form action='materials.php'>
-                                        <label>Expiry date</label>
-                                            <input type="date" name="expiry">
-                                            <button class="au-btn-filter">
-                                            <i class="zmdi zmdi-filter-list"></i>filters</button></form>
+                                            <form action='materials.php'>
+                                                <label>Expiry date</label>
+                                                <input type="date" name="expiry">
+                                                <button class="au-btn-filter">
+                                                <i class="zmdi zmdi-filter-list"></i>filters</button>
+                                            </form>
                                             <div class="dropDownSelect2"></div>
                                         </div>
                                         <div class="rs-select2--light rs-select2--md-10">

@@ -139,10 +139,16 @@ if(isset($_GET['grsno'])){
                         <label class="form-control-label" for="input-issued-from">Issued From</label>
                         <select class="form-control form-control-alternative" onchange="javascript:location.href = this.value;"  name="issuefrom" >
                         <?php if ($user['divid']!=5): ?>
-                          <option value="<?php echo $user['divid']; ?>"><?php echo $user['divname']; ?></option>
+                          <option value="<?php echo $user['divid']; ?>" selected><?php echo $user['divname']; ?></option>
+                          
                         <?php else: ?>
                           <?php while($row = mysqli_fetch_array($resu)): ?>
+                            <?php if($row['divid']==$_GET['divid']): ?>
+                              <option value="issue.php?mid=<?php echo $_GET['mid']?>&grsno=<?php echo $row2['grsid'] ;?>&divid=<?php echo $row['divid']; ?>" selected><?php echo $row['divname']; ?></option>
+                            <?php elseif($row['divid']!=$_GET['divid']): ?>
                             <option value="issue.php?mid=<?php echo $_GET['mid']?>&grsno=<?php echo $row2['grsid'] ;?>&divid=<?php echo $row['divid']; ?>"><?php echo $row['divname']; ?></option>
+                            <?php endif; ?>
+
                           <?php endwhile; ?>           
                           
                         <?php endif; ?>
