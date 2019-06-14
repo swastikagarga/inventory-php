@@ -6,11 +6,11 @@ $rs=mysqli_query($conn,"select * from stocks");
 if(isset($_GET['expiry'])){
     $expiry= $_GET['expiry'];
     
-$join=mysqli_query($conn," select * from stocks s join materials m on s.mid=m.mid where s.expirydate='$expiry'");
+$join=mysqli_query($conn," select * from stocks s join materials m on s.mid=m.mid join billtable b on b.id=s.grsid where s.expirydate='$expiry'");
 }
 
 else
-{$join=mysqli_query($conn,"select * from stocks s join materials m on s.mid=m.mid ");}
+{$join=mysqli_query($conn,"select * from stocks s join materials m on s.mid=m.mid join billtable b on b.id=s.grsid ");}
 ?>
                         <div class="row">
                             <div class="col-md-12">
@@ -97,7 +97,7 @@ else
                             <button class="item" data-toggle="tooltip" data-placement="top" title="Damage">
                             <a href="damage.php?id=<?php echo $row['stockid'] ?>"><i class="zmdi zmdi-delete"></i>
                             </button>
-                        </div>
+                        </div> <tr class="spacer"></tr>
                     </td>
                             <?php } ?>
                     <tr class="spacer"></tr>

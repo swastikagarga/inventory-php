@@ -42,7 +42,7 @@ else{
                     <div class="rs-select2--dark rs-select2--sm rs-select2--dark2">
                         <select class="js-select2" onchange="javascript:location.href=this.value;" name="type">
                             <option selected="selected">Export</option>
-                            <option value="stockpdf.php">PDF</option>
+                            <option value="issuepdf.php">PDF</option>
                             <option value="">EXCEL</option>
                         </select>
                         <div class="dropDownSelect2"></div>
@@ -59,79 +59,54 @@ else{
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-lg-12">
-                                <div class="table-responsive table--no-card m-b-30">
-                                    <table class="table table-borderless table-striped table-earning">
+                            <div class="table-responsive table-responsive-data2">
+                                    <table class="table table-data2">
                                         <thead>
-                                        <tr>
-                   <th scope="col">Material Name</th>
-                   <th scope="col">Date</th>
-                    <th scope="col">Issued TO</th>
-                    <th scope="col">Issued FROM</th>
-                    <th scope="col">QUANTITY OF REQUISITION</th>
-                    <th scope="col">Issue Quantity</th>
-                    <th scope="col">Rate</th>
-                    <th scope="col">Amount</th>
-                  </tr>
-                </thead>
-                <tbody>
-
-                    <?php
-
+                                            <tr>
+                                            <th>status</th>
+                                            <th>material name</th>
+                                            <th>date</th>
+                                            <th>issue to</th>
+                                            <th>issue from</th>
+                                            <th>issue quantity</th>
+                                            <th>amount</th>
+                                            
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        <?php
                             while($row=mysqli_fetch_array($join))
                             {
                                 
                     ?>
-                    <tr>
+                      <tr class="tr-shadow"> 
+                      <td>
+                    <?php echo $row['status'] ?>
+                    </td>  
+                      <td >
+                    <?php echo $row['mname'] ?>
+                    </td>          
                     <td >
-                    <div class="media-body">
-                          <span class="mb-0 text-sm"><?php echo $row['mname'] ?></span>
-                            </div>
+                    <?php echo $row['date'] ?>
                     </td>
                     <td >
-                    <div class="media-body">
-                          <span class="mb-0 text-sm"><?php echo $row['date'] ?></span>
-                        </div>
+                    <?php echo $row['issuedto'] ?>
                     </td>
                     <td>
-                      
-                        <i class="bg-warning"></i> <?php echo $row['sdivname'] ?>
-                      </span>
+                    <?php echo $row['issuedfrom'] ?>
                     </td>
                     <td>
-                    <div class="media-body">
-                          <span class="mb-0 text-sm"><a href="issuetable.php?divna=<?php echo $row['divid'] ?>"><?php echo $row['divname'] ?></a></span>
-                        </div>
+                    <?php echo $row['issuequan'] ?>
                     </td>
-                    <td class="text-center" >
-                    <div class="media-body">
-                          <span class="mb-0 text-sm"><?php echo $row['quantityofreq'] ?></span>
-                        </div>
+                    <td>
+                    <?php echo $row['amount'] ?>
                     </td>
-                    <td class="text-center">
-                    <div class="media-body">
-                          <span class="mb-0 text-sm"><?php echo $row['issuequan'] ?></span>
-                        </div>
+                    <td> <tr class="spacer"></tr>
                     </td>
-                    <td >
-                    <div class="media-body">
-                          <span class="mb-0 text-sm"><?php echo $row['rate'] ?></span>
-                        </div>
-                    </td>
-                    <td >
-                    <div class="media-body">
-                          <span class="mb-0 text-sm"><?php echo $row['amount'] ?></span>
-                        </div>
-                    </td>
-                  </tr>
-                    
-                    
-                    <?php
-                            }
-
-                    ?>
-                  
-                  
-                </tbody>
+                            <?php } ?>
+                    <tr class="spacer"></tr>
+                </tr>
+            </tbody>
               </table>
             </div>
           </div>

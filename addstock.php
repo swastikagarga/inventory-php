@@ -2,6 +2,7 @@
 include('header.php');
 include('conn.php');
 
+$gr=mysqli_query($conn,"select * from billtable");
 $rs=mysqli_query($conn,"select * from category");
 $res=mysqli_query($conn,"select * from types");
 if(isset($_GET['catid'])){
@@ -142,7 +143,18 @@ if(isset($_GET['mid'])){
                     <div class="col-lg-3">
                       <div class="form-group">
                         <label class="form-control-label" for="input-material-code">GRS no</label>
-                        <input type="number" id="input-material-code" class="form-control form-control-alternative"  name="grsno" >
+                        <select class="form-control form-control-alternative" name="grsno" >
+                                <?php
+
+                                    while($row1=mysqli_fetch_array($gr))
+                                    {
+                                        
+                                    ?>
+                                    <option value="<?php echo $row1['id'] ?>"><?php echo $row1['grsno'] ?></option>
+                                    <?php
+                                      }
+                                      ?>
+                        </select>
                       </div>
                     </div>
                     

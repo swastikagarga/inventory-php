@@ -2,7 +2,7 @@
 include('header.php');
 include('conn.php');
 $id = $_GET['id'];
-$stc=mysqli_query($conn,"select * from stocks where stockid='$id'");
+$stc=mysqli_query($conn,"select * from stocks s join billtable b on b.id=s.grsid where stockid='$id'");
 $reew=mysqli_fetch_array($stc);
 ?>
 <div class="col-lg-12">

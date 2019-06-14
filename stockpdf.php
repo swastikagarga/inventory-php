@@ -57,9 +57,9 @@ function FancyTable($header)
 }
 $db = new dbObj();
 $connString =  $db->getConnstring();
-$result = mysqli_query($connString, "SELECT * FROM stocks s JOIN materials m ON s.mid=m.mid") or die("database error:". mysqli_error($connString));
+$result = mysqli_query($connString, "SELECT * FROM stocks s JOIN materials m ON s.mid=m.mid join billtable b on b.id=s.grsid") or die("database error:". mysqli_error($connString));
 // Column headings
-$header = array('Material Name', 'Grsno', 'Grsdate' , 'Quantity','Rate','Expirydate');
+$header = array('Material Name', 'Grsno' ,'Grsdate', 'Quantity','Rate','Expirydate');
 
 $pdf = new PDF();
 $pdf->AddPage();

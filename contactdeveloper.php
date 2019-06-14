@@ -19,7 +19,7 @@ include('conn.php');
                     <div class="col-lg-3">
                       <div class="form-group">
                         <label class="form-control-label" for="input-grsno">Subject</label>
-                        <input type="text" disabled id="input-grsno" class="form-control form-control-alternative" value="<?php echo $row['grsno'] ?>"  name="grsno">
+                        <input type="text" id="input-grsno" class="form-control form-control-alternative" value="<?php echo $row['grsno'] ?>"  name="grsno">
                       </div>
                     </div>
                     <div class="col-lg-3">

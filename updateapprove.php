@@ -25,7 +25,7 @@ if(mysqli_query($conn,$query))
     
 	$notify="insert into notification (usend,description,whom_to_notify) values ('$userid','the item has been approved', '$utype')";
 	mysqli_query($conn,$notify);
-	//header("Location: approval.php");
+	header("Location: approval.php");
 	}
 else{
 	echo "failed";

@@ -31,7 +31,7 @@ header('location:index.php');
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>Dashboard</title>
+    <title>APDCL</title>
 
     <!-- Fontfaces CSS-->
     <link href="css/font-face.css" rel="stylesheet" media="all">
@@ -283,20 +283,19 @@ header('location:index.php');
                     <div class="container-fluid">
                         <div class="header-wrap">
                             <form class="form-header" action="" method="POST">
-                                <input class="au-input " type="text" onkeyup="showResult(this.value)" name="search" placeholder="Search for datas &amp; reports..." />
+                                <!--<input class="au-input " type="text" onkeyup="showResult(this.value)" name="search" placeholder="Search for datas &amp; reports..." />
                                 
                                 
                                 <button class="au-btn--submit" type="submit">
                                     <i class="zmdi zmdi-search"></i>
-                                </button>
+                                </button>-->
                             </form>
-
                             
                             <div class="header-button">
                                 <div class="noti-wrap">
                                     <div class="noti__item js-item-menu">
                                         <i class="zmdi zmdi-comment-more"></i>
-                                        <span class="quantity">1</span>
+                                       <!-- <span class="quantity"></span>-->
                                         <div class="mess-dropdown js-dropdown">
                                             <div class="mess__title">
                                                 <p>You have  news message</p>
@@ -329,7 +328,7 @@ header('location:index.php');
                                     </div>
                                     <div class="noti__item js-item-menu">
                                         <i class="zmdi zmdi-email"></i>
-                                        <span class="quantity">1</span>
+                                        
                                         <div class="email-dropdown js-dropdown">
                                             <div class="email__title">
                                                 <p>You have 3 New Emails</p>
@@ -368,10 +367,10 @@ header('location:index.php');
                                     </div>
                                     <div class="noti__item js-item-menu">
                                         <i class="zmdi zmdi-notifications"></i>
-                                        <span class="quantity">3</span>
+                                        
                                         <div class="notifi-dropdown js-dropdown">
                                             <div class="notifi__title">
-                                                <p>You have 3 Notifications</p>
+                                                <p>You have  Notifications</p>
                                             </div>
                                             
                                             <?php
@@ -398,7 +397,7 @@ header('location:index.php');
                                             
                                             
                                             <div class="notifi__footer">
-                                                <a href="notify.php">All notifications</a>
+                                                <a href="notify.php">Read All notifications</a>
                                             </div>
                                         </div>
                                     </div>

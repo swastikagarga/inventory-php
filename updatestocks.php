@@ -19,7 +19,7 @@ if(!$conn)
 	die ("Connection fail".mysqli_connect_error());
 }
 
-$qry="update stocks set quantity='$quantity',grsno='$grsno',mfgdate='$mfgdate',expirydate='$expdate',rate='$rate' WHERE stockid='$stockid'";
+$qry="update stocks set quantity='$quantity',grsid='$grsno',mfgdate='$mfgdate',expirydate='$expdate',rate='$rate' WHERE stockid='$stockid'";
 
 if(mysqli_query($conn,$qry))
 {

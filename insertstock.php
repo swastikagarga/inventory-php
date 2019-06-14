@@ -19,7 +19,7 @@ if(!$conn)
 	die ("Connection fail".mysqli_connect_error());
 }
 
-$qry="insert into stocks (mid,quantity,grsno,mfgdate,expirydate,rate) values ('$mid','$quantity','$grsno','$mfgdate','$expdate','$rate')";
+$qry="insert into stocks (mid,quantity,grsid ,mfgdate,expirydate,rate) values ('$mid','$quantity','$grsno','$mfgdate','$expdate','$rate')";
 
 if(mysqli_query($conn,$qry))
 {

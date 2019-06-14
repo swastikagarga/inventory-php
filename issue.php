@@ -1,24 +1,44 @@
 <?php
+session_start();
+$sesid=$_SESSION['userid'];
+$sesusertype=$_SESSION['usertypes'];
 include('header.php');
 include('conn.php');
 
-$rs=mysqli_query($conn,"select * from stocks s join materials m on s.mid=m.mid ");
+$rs=mysqli_query($conn,"select * from stocks s join materials m on s.mid=m.mid");
 $res=mysqli_query($conn,"select * from subdivision");
+if(isset($_GET['divid'])){
+  $divid = $_GET['divid'];
+  if($divid!=5){
+    $res=mysqli_query($conn,"SELECT * FROM subdivision WHERE divid='$divid'");
+  }else{
+    $res=mysqli_query($conn,"SELECT * FROM subdivision");
+  }
+}
 $resu=mysqli_query($conn,"select * from division");
+
+$userquery = mysqli_query($conn, "SELECT * FROM users AS u, division AS d WHERE u.divid=d.divid AND u.userid='$sesid'");
+$user = mysqli_fetch_array($userquery);
+$divid = $user['divid'];
+$resu1=mysqli_query($conn,"select * from division where divid='$divid'");
+
+
+
 
 
 if(isset($_GET['mid'])){
   $miid = $_GET['mid'];
-  $reas=mysqli_query($conn, "select * from stocks where mid='$miid'");
+  $reas=mysqli_query($conn, "select * from stocks s join billtable b on b.id=s.grsid where mid='$miid'");
   //$row=mysqli_fetch_array($reas);
 }
 if(isset($_GET['grsno'])){
   $grsno = $_GET['grsno'];
-  $matexe=mysqli_query($conn,"select * from stocks where grsno='$grsno'");
+  $matexe=mysqli_query($conn,"select * from stocks s join billtable b on b.id=s.grsid where grsno='$grsno'");
 
   $mat = mysqli_fetch_array($matexe);
 
 }
+
 //$reas=mysqli_query($conn,"select * from stocks s join materials m on s.mid=m.mid ");
 
 ?>
@@ -96,7 +116,7 @@ if(isset($_GET['grsno'])){
                                 ?>
                                         
                                     
-                                    <option value="issue.php?mid=<?php echo $_GET['mid']?>&grsno=<?php echo $row2['grsno'] ;?>"><?php echo $row2['grsno'] ;?></option>
+                                    <option value="issue.php?mid=<?php echo $_GET['mid']?>&grsno=<?php echo $row2['grsid'] ;?>"><?php echo $row2['grsno'] ;?></option>
                                     
                                     <?php
                                     }
@@ -114,8 +134,22 @@ if(isset($_GET['grsno'])){
                         <input type="date" id="input-date" value="<?php echo $mat['expirydate'] ?>" class="form-control form-control-alternative" disabled >
                       </div>
                     </div>
-
-                      <input type="hidden" value="<?php echo $_GET['mid']; ?>" name="mid">
+                    <div class="col-lg-4">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-issued-from">Issued From</label>
+                        <select class="form-control form-control-alternative" onchange="javascript:location.href = this.value;"  name="issuefrom" >
+                        <?php if ($user['divid']!=5): ?>
+                          <option value="<?php echo $user['divid']; ?>"><?php echo $user['divname']; ?></option>
+                        <?php else: ?>
+                          <?php while($row = mysqli_fetch_array($resu)): ?>
+                            <option value="issue.php?mid=<?php echo $_GET['mid']?>&grsno=<?php echo $row2['grsid'] ;?>&divid=<?php echo $row['divid']; ?>"><?php echo $row['divname']; ?></option>
+                          <?php endwhile; ?>           
+                          
+                        <?php endif; ?>
+                        </select>
+                      </div>
+                    </div>
+                    <input type="hidden" value="<?php echo $_GET['mid']; ?>" name="mid">
                         
                     <div class="col-lg-4">
                       <div class="form-group">
@@ -131,21 +165,6 @@ if(isset($_GET['grsno'])){
                                     ?>
                             
                                     </select>
-                      </div>
-                    </div>
-                    <div class="col-lg-4">
-                      <div class="form-group">
-                        <label class="form-control-label" for="input-issued-from">Issued From</label>
-                        <select class="form-control form-control-alternative" name="issuefrom" >
-                                   <?php
-                                     while($row3=mysqli_fetch_array($resu))
-                                     {   
-                                   ?>
-                                     <option value="<?php echo $row3['divid'] ?>"><?php echo $row3['divname'] ?></option>
-                                    <?php
-                                     }
-                                    ?>
-                        </select>
                       </div>
                     </div>
                     <div class="col-lg-4">
