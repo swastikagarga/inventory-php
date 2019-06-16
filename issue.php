@@ -1,8 +1,9 @@
 <?php
-session_start();
+include('header.php');
+
 $sesid=$_SESSION['userid'];
 $sesusertype=$_SESSION['usertypes'];
-include('header.php');
+
 include('conn.php');
 
 $rs=mysqli_query($conn,"select * from stocks s join materials m on s.mid=m.mid");
@@ -138,8 +139,9 @@ if(isset($_GET['grsno'])){
                       <div class="form-group">
                         <label class="form-control-label" for="input-issued-from">Issued From</label>
                         <select class="form-control form-control-alternative" onchange="javascript:location.href = this.value;"  name="issuefrom" >
+                        <option value="">Select</option>
                         <?php if ($user['divid']!=5): ?>
-                          <option value="<?php echo $user['divid']; ?>" selected><?php echo $user['divname']; ?></option>
+                          <option value="issue.php?mid=<?php echo $_GET['mid']?>&grsno=<?php echo $row2['grsid'] ;?>&divid=<?php echo $user['divid']; ?>"><?php echo $user['divname']; ?></option>
                           
                         <?php else: ?>
                           <?php while($row = mysqli_fetch_array($resu)): ?>

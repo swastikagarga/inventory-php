@@ -10,7 +10,8 @@ $join=mysqli_query($conn," select * from stocks s join materials m on s.mid=m.mi
 }
 
 else
-{$join=mysqli_query($conn,"select * from stocks s join materials m on s.mid=m.mid join billtable b on b.id=s.grsid ");}
+{
+    $join=mysqli_query($conn,"select * from stocks s join materials m on s.mid=m.mid join billtable b on b.id=s.grsid ");}
 ?>
                         <div class="row">
                             <div class="col-md-12">
@@ -28,9 +29,8 @@ else
                                         </div>
                                         <div class="rs-select2--light rs-select2--md-10">
                                         <form action='stocks.php'>
-                                            
                                             <div class="dropDownSelect2"></div>
-                                    <div class="table-data__tool-right">
+                                        <div class="table-data__tool-right">
                                     
                                         <div class="rs-select2--dark rs-select2--sm rs-select2--dark2">
                                             <select class="js-select2" onchange="javascript:location.href = this.value;" name="type">
@@ -42,7 +42,6 @@ else
                                         </div><button class="au-btn au-btn-icon au-btn--green au-btn--small">
                                                 <a href="stocktable.php">Print</a>
                                         </button>
-                                        
                                     </div>
                                 </div>
                                 <div class="table-responsive table-responsive-data2">

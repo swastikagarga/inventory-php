@@ -1,4 +1,6 @@
  <?php
+$sesid=$_SESSION['userid'];
+
 
 include('header.php');
 include('conn.php');
@@ -12,12 +14,12 @@ $row2=mysqli_fetch_array($resu);
 $rsu=mysqli_query($conn,"select count(*) as i from issue");
 $row3=mysqli_fetch_array($rsu);
 
+$select_activity = "select * from activity order by id desc limit 3";
+    $all_activity = mysqli_query($conn, $select_activity);
+    
 
-?>
- <!-- MAIN CONTENT-->
-
-                            
-            <div class="main-content">
+?>                
+            
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         <div class="row">
@@ -101,4 +103,80 @@ $row3=mysqli_fetch_array($rsu);
                                 </div>
                             </div>
                         </div>
+
+                        <div class="col-md-6">
+								<div class="card">
+									<div class="card-header">
+										<strong class="card-title">Activities</strong>
+									</div>
+									<div class="card-body">
+										<div class="sufee-alert alert with-close alert-primary alert-dismissible fade show">
+                                            <span class="badge badge-pill badge-primary">Success</span>
+                                            
+											<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+
+										<div class="sufee-alert alert with-close alert-secondary alert-dismissible fade show">
+											<span class="badge badge-pill badge-secondary">Success</span>
+											You successfully read this important alert.
+											<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+
+										<div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
+											<span class="badge badge-pill badge-success">Success</span>
+											You successfully read this important alert.
+											<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+
+										
+										<div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
+											<span class="badge badge-pill badge-danger">Success</span>
+											You successfully read this important alert.
+											<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+
+										<div class="sufee-alert alert with-close alert-warning alert-dismissible fade show">
+											<span class="badge badge-pill badge-warning">Success</span>
+											You successfully read this important alert.
+											<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+
+										<div class="sufee-alert alert with-close alert-info alert-dismissible fade show">
+											<span class="badge badge-pill badge-info">Success</span>
+											You successfully read this important alert.
+											<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+
+										<div class="sufee-alert alert with-close alert-light alert-dismissible fade show">
+											<span class="badge badge-pill badge-light">Success</span>
+											You successfully read this important alert.
+											<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+
+										<div class="sufee-alert alert with-close alert-dark alert-dismissible fade show">
+											<span class="badge badge-pill badge-dark">Success</span>
+											You successfully read this important alert.
+											<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+
+									</div>
+								</div>
+
            

@@ -4,7 +4,7 @@ include('conn.php');
 
 ?>
 <div class="card-body card-block">
-        <form action="insertdamage.php" method="POST">
+        <form action="insertcontact.php" method="POST">
                 <h6 class="heading-small text-muted mb-4">Contact information</h6>
                 <div class="pl-lg-10">
                   <div class="row">
@@ -12,21 +12,19 @@ include('conn.php');
                       <div class="form-group">
 
                       <label class="form-control-label" for="input-mname">Email</label>
-                        <input type="hidden" value="<?php echo $row['mid'] ?>" name="damid">
-                        <input type="text"id="input-materialname" class="form-control form-control-alternative" value="<?php echo $row['mname'] ?>" name="mname" >
+                        <input type="email"id="input-materialname" class="form-control form-control-alternative"  name="email" >
                        </div>
                      </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-4">
                       <div class="form-group">
                         <label class="form-control-label" for="input-grsno">Subject</label>
-                        <input type="text" id="input-grsno" class="form-control form-control-alternative" value="<?php echo $row['grsno'] ?>"  name="grsno">
+                        <input type="text" id="input-grsno" class="form-control form-control-alternative"  name="subject">
                       </div>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-4">
                       <div class="form-group">
                         <label class="form-control-label" for="input-quantity">Message</label>
-                        <input type="hidden" name="dbqty" value="<?php echo $row['quantity'] ?>">
-                        <input type="text" id="input-quantity" class="form-control form-control-alternative"  name="quantity" required>
+                        <input type="text"  id="input-quantity" class="form-control form-control-alternative"  name="message" >
                       </div>
                     </div>
                     

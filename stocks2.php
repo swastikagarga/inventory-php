@@ -33,50 +33,98 @@
 
 <?php
     include('header.php');
-    $sesusertype=$_SESSION['usertypes'];
     include('conn.php'); 
-    $rs=mysqli_query($conn,"select * from category");
-
-    $join=mysqli_query($conn,"select * from types t join materials m on t.id = m.t_id join category c on c.catid=m.catid");
-
+    $rs=mysqli_query($conn,"select * from stocks");
+    
+    if(isset($_GET['expiry'])){
+        $expiry= $_GET['expiry'];
+        
+    $join=mysqli_query($conn," select * from stocks s join materials m on s.mid=m.mid join billtable b on b.id=s.grsid where s.expirydate='$expiry'");
+    }
+    
+    else
+    {
+        $join=mysqli_query($conn,"select * from stocks s join materials m on s.mid=m.mid join billtable b on b.id=s.grsid ");}
 ?><!-- Dark table start -->
+
+                        <div class="card">
+                            <div class="card-body">
+                                    <h4 class="header-title">Stocks Table</Table></h4>
+                                <div class="table-responsive table-responsive-data2">
+                                    <div class="data-tables datatable-dark">
+                                    <div class="table-data__tool">
+                                    <div class="table-data__tool-left">
+                                    <div class="rs-select2--light rs-select2--md-10">
+                                                <form action='stocks.php'>
+                                                    <label class="form-control-label">Expiry date  :</label>
+                                                    <input type="date"  name="expiry" >
+                                                    <button class="au-btn-filter">
+                                                    <i class="zmdi zmdi-filter-list"></i>filters</button>
+                                                </form>
+                                                    <div class="dropDownSelect2"></div>
+                                        </div>    
+                                        </div>
+                                        <div class="rs-select2--light rs-select2--md-10">
+                                            <div class="dropDownSelect2"></div>
+                                            <div class="table-data__tool-right">
+                                                <div class="rs-select2--dark rs-select2--sm rs-select2--dark2">
+                                                <select class="js-select2" onchange="javascript:location.href = this.value;" name="type">
+                                                    <option selected="selected">Export</option>
+                                                    <option value="stockpdf.php">PDF</option>
+                                                    <option value="">EXCEL</option>
+                                                </select>
+                                                <div class="dropDownSelect2"></div>
+                                                </div>
+                                                <button class="au-btn au-btn-icon au-btn--green au-btn--small">
+                                                    <a href="stocktable.php">Print</a>
+                                            </div>
+                                        </button></div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     <div class="col-12 mt-5">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="header-title">Materials Table</h4>
+                                <h4 class="header-title">Stocks Table</Table></h4>
                                 <div class="table-responsive table-responsive-data2">
                                 <div class="data-tables datatable-dark">
                                     <table id="dataTable3" class="text-center">
                                         <thead class="text-capitalize">
                                             <tr>
-                                                <th>MCODE</th>
-                                                <th>MNAME</th>
-                                                <th>MAKE</th>
-                                                <th>TYPE</th>
+                                                <th>Mname</th>
+                                                <th>GRSNO</th>
+                                                <th>QUANTITY</th>
+                                                <th>MANUFACTURE DATE</th>
+                                                <th>EXPIRY DATE</th>
+                                                <th>RATE</th>
                                                 <th>ACTION</th>
                                                 
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php while($row = mysqli_fetch_array($join)): ?>
-
                                                 <tr>
-                                                    <td><?php echo $row['matcode'] ?></td>
                                                     <td><?php echo $row['mname'] ?></td>
-                                                    <td><?php echo $row['make'] ?></td>
-                                                    <td><?php echo $row['type'] ?></td>
+                                                    <td><?php echo $row['grsno'] ?></td>
+                                                    <td><?php echo $row['quantity'] ?></td>
+                                                    <td><?php echo $row['mfgdate'] ?></td>
+                                                    <td><?php echo $row['expirydate'] ?></td>
+                                                    <td><?php echo $row['rate'] ?></td>
                                                     <td>
                                                         <div class="table-data-feature">
                                                             <button class="item" data-toggle="tooltip" data-placement="top" title="Show Details">
                                                                 <a href="showdetails.php?id=<?php echo $row['mid'] ?>" > <i class="zmdi zmdi-mail-send"></i></a>
                                                             </button>
-                                                            <?php
-                                                                        if($sesusertype==1){?>
-                                                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
-                                                                            <a href="editmaterials.php?id=<?php echo $row['mid'] ?>"><i class="zmdi zmdi-edit"></i></a>
-                                                                            </button><?php }
-                                                            ?>
-                                                    
+                                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                                                <a href="editmaterials.php?id=<?php echo $row['mid'] ?>"><i class="zmdi zmdi-edit"></i></a>
+                                                            </button>
+                                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Damage">
+                                                                <a href="damage.php?id=<?php echo $row['stockid'] ?>"><i class="zmdi zmdi-delete"></i>
+                                                            </button>
                                                         </div>
                                                     </td>
                                                 </tr>
